@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-
 import UsersList from "./UsersList";
 
-export default function Users() {
-
-
+export default function Users({
+  users,
+  onDeleteItemFunc,
+  onEditClick,
+  onCreateClick,
+}) {
   return (
     <>
       <div>
@@ -13,10 +15,14 @@ export default function Users() {
         </div>
       </div>
       <h1>Users:</h1>
-      <UsersList />
+      <UsersList
+        users={users}
+        onDeleteItemFunc={onDeleteItemFunc}
+        onEditClick={onEditClick}
+      />
       <div>
         <Link to={"create"}>
-          <button>Create new user</button>
+          <button onClick={() => onCreateClick}>Create new user</button>
         </Link>
       </div>
     </>

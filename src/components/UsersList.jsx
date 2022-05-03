@@ -1,13 +1,15 @@
 import UserEdit from "./UserEdit";
-import useItems from "../hooks/hooks";
 
-export default function UsersList() {
-  const { users, onDeleteItemFunc, onEditFunc  } = useItems();
-
+export default function UsersList({ users, onDeleteItemFunc, onEditClick }) {
   return (
     <div>
       {users.map((item) => (
-        <UserEdit key={item.id} item={item}  onDeleteItemFunc={onDeleteItemFunc} onEditFunc={onEditFunc} />
+        <UserEdit
+          key={item.id}
+          item={item}
+          onDeleteItemFunc={onDeleteItemFunc}
+          onEditClick={onEditClick}
+        />
       ))}
     </div>
   );

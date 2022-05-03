@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import useItems from "../hooks/hooks";
+import useGetUsers from "../hooks/useGetUsers";
 
 export default function Albums() {
-  const { albums } = useItems();
+  const { albums } = useGetUsers();
   return (
     <div>
       <div style={{ fontSize: "20px", marginTop: "40px" }}>

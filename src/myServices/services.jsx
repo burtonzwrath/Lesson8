@@ -18,13 +18,13 @@ export function deleteItem(item) {
 export function editItem(item) {
   return axios.put(URL + "/users/" + item.id, item, {
     headers: { "Content-Type": "application/json" },
-  });}
+  });
+}
 
-  export function createItem(item) {
-    return axios
-      .post(URL + "/users/", item, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((item) => item.data);
-
+export function createItem(item) {
+  return axios
+    .post(URL + "/users/", item, {
+      headers: { "Content-Type": "application/json" },
+    })
+    .then((item) => item.data);
 }
