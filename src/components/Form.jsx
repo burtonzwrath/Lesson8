@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FormControl, FormLabel, Button, TextField } from "@mui/material";
 
 export default function Form({ selectedUser, onSave }) {
   const [newUser, setNewUser] = useState({ ...selectedUser });
@@ -13,30 +14,61 @@ export default function Form({ selectedUser, onSave }) {
     setNewUser(info);
     console.log(newUser);
   }
+  const onLink = () => {
+    return <Link to={"/users"}>""</Link>;
+  };
 
   return (
-    <form>
-      <label>
-        Enter name
-        <input
+    <FormControl>
+
+        <TextField
+          label="Enter name"
+          variant="filled"
+          color="warning"
+          focused
           name="name"
           value={newUser.name}
           onChange={onChange}
           type="text"
         />
-      </label>
-      <label>
-        <input
+
+
+        <TextField
+          sx={{}}
+          label="Enter UserName"
+          color="secondary"
+          focused
+          variant="filled"
           name="username"
           value={newUser.username}
           onChange={onChange}
           type="text"
         />
-      </label>
-      <button onClick={onSubmit}>
-        <Link to={"/users"}>Save</Link>
-      </button>
-      <button>Cancel</button>
-    </form>
+
+
+      <Link style={{ textDecoration: "none", color: "green", marginTop:"20px" }} to={"/users"}>
+        <Button
+          sx={{ border: "3px solid green", backgroundColor: "lightgreen", color:"green" }}
+          variant=""
+          onClick={onSubmit}
+        >
+          {" "}
+          Save
+        </Button>
+      </Link>
+
+      <Link
+        style={{ textDecoration: "none", color: "blue", fontSize: "30px", }}
+        to={"/users"}
+      >
+        <Button
+          sx={{ color:"red", border: "3px solid red", backgroundColor: "orange" }}
+          variant=""
+          onClick={onSubmit}
+        >
+          Cancel
+        </Button>
+      </Link>
+    </FormControl>
   );
 }

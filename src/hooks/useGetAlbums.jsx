@@ -1,18 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import { getAlbums, getUsers } from "../myServices/services";
+import { useState } from "react";
 
-export default function useGetAlbums() {
-  const [users, setUsers] = useState([]);
-  const [albums, setAlbums] = useState([]);
+export default function useGetAlbums(cb, defaultValue = []) {
+  const [albums, setAlbums] = useState(defaultValue);
 
+  const getNewAlbums = () => {
+    cb().then((data) => {
+      setAlbums(data);
+      return data;
+    });
+  };
 
-
-  const getNewAlbums = useCallback(() => {
-    getAlbums().then((data) => setAlbums(data));
-  }, []);
-
-  useEffect(() => {
-    getNewAlbums();
-    getNewUsers();
-  }, [getNewAlbums, getNewUsers]);
+  return {
+    albums,
+    setAlbums,
+    getNewAlbums,
+  };
 }

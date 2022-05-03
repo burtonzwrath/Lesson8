@@ -1,8 +1,9 @@
 import UserEdit from "./UserEdit";
+import { Box } from "@mui/material";
 
 export default function UsersList({ users, onDeleteItemFunc, onEditClick }) {
   return (
-    <div>
+    <Box>
       {users.map((item) => (
         <UserEdit
           key={item.id}
@@ -11,6 +12,6 @@ export default function UsersList({ users, onDeleteItemFunc, onEditClick }) {
           onEditClick={onEditClick}
         />
       ))}
-    </div>
+    </Box>
   );
 }

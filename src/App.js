@@ -10,12 +10,16 @@ import {
   createItem,
   deleteItem,
   editItem,
+  getAlbums,
   getUsers,
 } from "./myServices/services";
 import { useEffect, useState } from "react";
+import { Box, Container } from "@mui/material";
+import useGetAlbums from "./hooks/useGetAlbums";
 
 function App() {
   const { users, setUsers, getNewUsers } = useGetUsers(getUsers, []);
+  const { albums, setAlbums, getNewAlbums } = useGetAlbums(getAlbums, []);
 
   const [selectedUser, setSelectedUser] = useState(newUser());
 
@@ -30,6 +34,7 @@ function App() {
 
   useEffect(() => {
     getNewUsers();
+    getNewAlbums();
   }, []);
 
   const onDeleteItemFunc = (user) => {
@@ -61,8 +66,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div>
+    <Container className="App">
+      <Box>
         <BrowserRouter>
           <Routes>
             <Route exact path={"/"} element={<Main />} />
@@ -78,7 +83,7 @@ function App() {
                 />
               }
             />
-            <Route path={"/albums"} element={<Albums />} />
+            <Route path={"/albums"} element={<Albums albums={albums} />} />
             <Route
               path={"/users/create"}
               element={
@@ -107,8 +112,8 @@ function App() {
             } /> } />
           </Routes>
         </BrowserRouter>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 }
 
