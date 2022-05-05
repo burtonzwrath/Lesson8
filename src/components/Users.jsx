@@ -21,7 +21,7 @@ export default function Users() {
           <Button
             sx={{ margin: "20px", backgroundColor: "orange" }}
             variant=""
-            onClick={() => onCreateClick}
+
           >
             Create new user
           </Button>
