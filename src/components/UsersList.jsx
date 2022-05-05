@@ -1,16 +1,11 @@
-import UserEdit from "./UserEdit";
 import { Box } from "@mui/material";
+import UserListItem from "./userListItem";
 
-export default function UsersList({ users, onDeleteItemFunc, onEditClick }) {
+export default function UsersList({ users }) {
   return (
     <Box>
       {users.map((item) => (
-        <UserEdit
-          key={item.id}
-          item={item}
-          onDeleteItemFunc={onDeleteItemFunc}
-          onEditClick={onEditClick}
-        />
+        <UserListItem item={item} />
       ))}
     </Box>
   );

@@ -15,16 +15,19 @@ export function deleteItem(item) {
   return axios.delete(URL + "/users/" + item.id);
 }
 
-export function editItem(item) {
-  return axios.put(URL + "/users/" + item.id, item, {
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
-export function createItem(item) {
+export function editUser(item) {
   return axios
-    .post(URL + "/users/", item, {
+    .put(URL + "/users/" + item.id, item, {
       headers: { "Content-Type": "application/json" },
     })
-    .then((item) => item.data);
+    .then((resp) => resp.data);
+}
+export function getUser(id) {
+  return axios.get(URL + "/users/" + id).then((resp) => resp.data);
+}
+
+export function createUser(item) {
+  return axios.post(URL + "/users/", item, {
+    headers: { "Content-Type": "application/json" },
+  });
 }
