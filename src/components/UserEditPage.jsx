@@ -4,6 +4,6 @@ import useUser from "../hooks/useUser";
 
 export default function UserEditPage() {
   const params = useParams();
-  const { user, onSave } = useUser(params.id);
-  return <Form user={user} onSave={onSave} />;
+  const { user, onSave ,removeUser} = useUser(params.id);
+  return <Form user={user} onSave={onSave} removeUser={removeUser} />;
 }

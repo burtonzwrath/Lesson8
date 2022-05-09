@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link as RLink } from "react-router-dom";
 import { FormControl, Button, TextField } from "@mui/material";
+import { Link } from "@mui/material";
 
-export default function Form({ user, onSave }) {
+export default function Form({ user, onSave, removeUser }) {
   const [newUser, setNewUser] = useState({ ...user });
-const navigate= useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     setNewUser(user);
@@ -18,6 +20,10 @@ const navigate= useNavigate()
     e.preventDefault();
     onSave(newUser).then(navigate("/users"));
   };
+
+  function userDelete(){
+      removeUser().then(()=>navigate("/users"))
+  }
 
   return (
     <FormControl>
@@ -44,40 +50,18 @@ const navigate= useNavigate()
         type="text"
       />
 
-      <Link
-        style={{ textDecoration: "none", color: "green", marginTop: "20px" }}
-        to={"/users"}
-      >
-        <Button
-          sx={{
-            border: "3px solid green",
-            backgroundColor: "lightgreen",
-            color: "green",
-          }}
-          variant=""
-          onClick={onSubmit}
-        >
-          {" "}
-          Save
-        </Button>
-      </Link>
+      <Button onClick={onSubmit}>Save</Button>
 
-      <Link
+      <RLink
+        link={Link}
         style={{ textDecoration: "none", color: "blue", fontSize: "30px" }}
         to={"/users"}
       >
-        <Button
-          sx={{
-            color: "red",
-            border: "3px solid red",
-            backgroundColor: "orange",
-          }}
-          variant=""
-          onClick={onSubmit}
-        >
-          Cancel
-        </Button>
-      </Link>
+        Cancel
+      </RLink>
+
+      <Button onClick={userDelete}>Delete</Button>
+
     </FormControl>
   );
 }

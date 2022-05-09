@@ -4,7 +4,7 @@ import { Container, Typography, Button, Box } from "@mui/material";
 import useUsers from "../hooks/useUsers";
 
 export default function Users() {
-  const { users } = useUsers();
+  const { users, removeUser } = useUsers();
   return (
     <Container>
       <Box>
@@ -15,17 +15,9 @@ export default function Users() {
       <Typography variant="h2" component="h2" sx={{ color: "blue" }}>
         Users:
       </Typography>
-      <UsersList users={users} />
+      <UsersList users={users} removeUser={removeUser} />
       <Box sx={{ margin: "20px", backgroundColor: "", borderRadius: "10px" }}>
-        <Link to={"create"}>
-          <Button
-            sx={{ margin: "20px", backgroundColor: "orange" }}
-            variant=""
-
-          >
-            Create new user
-          </Button>
-        </Link>
+        <Link to={"create"}>Create new user</Link>
       </Box>
     </Container>
   );

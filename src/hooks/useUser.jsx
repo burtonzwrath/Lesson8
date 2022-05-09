@@ -22,11 +22,9 @@ export default function useUser(id) {
     getUser(id).then((data) => setUser(data));
   }, [id]);
 
-  function removeUser(id) {
-    deleteItem(id).then(() => {
-      setUser((users) => users.filter((user) => user.id !== id));
-    });
-  }
+  const removeUser = (id) => {
+    return deleteItem(id)
+  };
 
   const onSave = (user) => {
     if (user.id) {

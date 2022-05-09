@@ -11,8 +11,8 @@ export function getAlbums() {
   return axios.get(URL + "/" + albums).then((resp) => resp.data);
 }
 
-export function deleteItem(item) {
-  return axios.delete(URL + "/users/" + item.id);
+export function deleteItem(id) {
+  return axios.delete(URL + "/users/" + id);
 }
 
 export function editUser(item) {
